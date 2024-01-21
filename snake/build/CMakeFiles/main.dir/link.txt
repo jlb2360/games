@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/main.dir/main.cpp.o CMakeFiles/main.dir/config.cpp.o CMakeFiles/main.dir/snake.cpp.o  -o main 

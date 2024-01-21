@@ -1,0 +1,3 @@
+/home/jlb1694/dev/games/snake/build/CMakeFiles/rebuild_cache.dir
+/home/jlb1694/dev/games/snake/build/CMakeFiles/edit_cache.dir
+/home/jlb1694/dev/games/snake/build/CMakeFiles/main.dir
