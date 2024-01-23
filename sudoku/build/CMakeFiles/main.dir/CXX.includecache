@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jlb1694/dev/games/sudoku/config.h
+
+/home/jlb1694/dev/games/sudoku/main.cpp
+iostream
+-
+config.h
+/home/jlb1694/dev/games/sudoku/config.h
+
