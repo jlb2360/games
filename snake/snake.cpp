@@ -5,6 +5,9 @@
 
 
 Snake::Snake(){
+    head = NULL;
+    tail = NULL;
+    length = 0;
     for (int i=0; i<20;i++){
         for (int j=0; j<20; j++){
             if (j == 0 || j == 19){
@@ -25,9 +28,11 @@ Snake::Snake(){
     int initdy = 0;
     int initPos[2] = {inity, initx};
     int initDir[2] = {initdy, initdx};
+    std::cout<<head<<std::endl;
     InsertBody(initPos, initDir);
 
     CreateApple();
+    exit = 0;
 }
 
 
@@ -83,20 +88,26 @@ void Snake::InsertBody(int pos[2], int dir[2]){
     n->pos[1] = pos[1];
     n->dir[0] = dir[0];
     n->dir[1] = dir[1];
+    std::cout<<head<<std::endl;
     if (head == NULL){
         head = n;
         tail = n;
+        length++;
     } else{
        Node *temp;
        temp = tail;
        temp->next = n;
        n->prev = temp;
        tail = n;
+       length++;
     }
 }
 
 
 int Snake::Update(){
+    if (exit == 1){
+        return 1;
+    }
     Node *p = tail;
 
     while (p->prev != NULL){
@@ -122,8 +133,6 @@ int Snake::Update(){
         return 1;
     } else if (head->pos[0] == apple[0] && head->pos[1] == apple[1]){
         int uP[2] = {tail->pos[0]-tail->dir[0], tail->pos[1]-tail->dir[1]};
-        std::cout<<tail->pos[0]<<" "<<tail->pos[1];
-        std::cout<<uP[0]<<" "<<uP[1];
         int uD[2] = {tail->dir[0], tail->dir[1]};
         InsertBody(uP, uD);
         CreateApple();
@@ -133,33 +142,38 @@ int Snake::Update(){
 }
 
 
-int Snake::Response(){
-    char key;
-    scanf("%s", &key);
+void Snake::Response(){
 
-    switch (key) {
-        case 'w':
-            head->dir[0]=-1;
-            head->dir[1]=0;
-            break;
-        case 'a':
-            head->dir[0]=0;
-            head->dir[1]=-1;
-            break;
-        case 's':
-            head->dir[0]=1;
-            head->dir[1]=0;
-            break;
-        case 'd':
-            head->dir[0]=0;
-            head->dir[1]=1;
-            break;
-        case 'x':
-            return 1;
-            break;
-        default:
-            return 0;
-            break;
+    while (exit == 0){
+        char key;
+        scanf("%s", &key);
+
+        switch (key) {
+            case 'w':
+                head->dir[0]=-1;
+                head->dir[1]=0;
+                break;
+            case 'a':
+                head->dir[0]=0;
+                head->dir[1]=-1;
+                break;
+            case 's':
+                head->dir[0]=1;
+                head->dir[1]=0;
+                break;
+            case 'd':
+                head->dir[0]=0;
+                head->dir[1]=1;
+                break;
+            case 'x':
+                exit = 1;
+                break;
+            default:
+                break;
+        }
     }
-    return 0;
+}
+
+void Snake::SetExit(){
+    exit=1;
 }

@@ -8,17 +8,20 @@ public:
 };
 
 class Snake{
-    char Board[20][20];
     Node *head;
     Node *tail;
+    char Board[20][20];
     int  apple[2];
+    int exit;
 
 public:
+    int length;
     Snake();
     void DrawBoard();
     void CreateApple();
     int Update();
-    int Response();
+    void Response();
+    void SetExit();
 
 
 private:

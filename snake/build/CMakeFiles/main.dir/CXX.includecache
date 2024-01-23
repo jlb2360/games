@@ -11,19 +11,13 @@
 /home/jlb1694/dev/games/snake/main.cpp
 config.h
 /home/jlb1694/dev/games/snake/config.h
+chrono
+-
 iostream
 -
 snake.h
 /home/jlb1694/dev/games/snake/snake.h
-
-/home/jlb1694/dev/games/snake/snake.cpp
-snake.h
-/home/jlb1694/dev/games/snake/snake.h
-cstdlib
--
-iostream
--
-ctime
+thread
 -
 
 /home/jlb1694/dev/games/snake/snake.h
