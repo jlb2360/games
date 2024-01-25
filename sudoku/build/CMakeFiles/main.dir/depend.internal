@@ -7,3 +7,7 @@ CMakeFiles/main.dir/config.cpp.o
 CMakeFiles/main.dir/main.cpp.o
  /home/jlb1694/dev/games/sudoku/config.h
  /home/jlb1694/dev/games/sudoku/main.cpp
+ /home/jlb1694/dev/games/sudoku/sudoku.h
+CMakeFiles/main.dir/sudoku.cpp.o
+ /home/jlb1694/dev/games/sudoku/sudoku.cpp
+ /home/jlb1694/dev/games/sudoku/sudoku.h

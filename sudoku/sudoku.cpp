@@ -2,8 +2,6 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
-#include <chrono>
-#include <thread>
 
 
 Puzzle::Puzzle(int g[9][9]){
@@ -16,7 +14,8 @@ Puzzle::Puzzle(int g[9][9]){
 }
 
 Puzzle::Puzzle(int Difficulty){
-    srand(time(NULL));
+    srand(time(NULL
+                ));
 
     int init= 0;
     int rNum;
@@ -46,18 +45,88 @@ Puzzle::Puzzle(int Difficulty){
         }
         check = 1;
     }
-    Display();
-    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-    std::cout<<"solving "<< std::endl;
 
     int solving = Solve(0,0);
-    Display();
-    if (solving==1){
-        std::cout<<"No Solution"<<std::endl;
-    } else {
-        std::cout<<"Found Something"<<std::endl;
+
+
+    int n;
+
+    switch (Difficulty) {
+        case 1:
+            n = 60;
+            break;
+        case 2:
+            n = 40;
+            break;
+        case 3:
+            n = 25;
+            break;
     }
 
+    int temp;
+    int tG[9][9];
+
+    for (int i=0; i<9; i++){
+        for (int j=0; j<9; j++){
+            tG[i][j] = grid[i][j];
+        }
+    }
+
+
+    int count = CountNonZeros(tG);
+    while (count != n){
+        RemoveNum(tG);
+        count = CountNonZeros(tG);
+    }
+
+    for (int i=0; i<9; i++){
+        for (int j=0; j<9; j++){
+            solution[i][j] = grid[i][j];
+        }
+    }
+
+    for (int i=0; i<9; i++){
+        for (int j=0; j<9; j++){
+            grid[i][j] = tG[i][j];
+        }
+    }
+}
+
+void Puzzle::RemoveNum(int tG[9][9]){
+        int solving = 1;
+        int randr;
+        int randc;
+        int temp;
+        while (solving == 1){
+            randr = rand()%9;
+            randc = rand()%9;
+            temp = grid[randr][randc];
+            grid[randr][randc] = 0;
+            solving = Solve(0, 0);
+            if (solving == 1){
+                grid[randr][randc] = temp;
+            } else {
+                tG[randr][randc] = 0;
+                for (int i=0; i<9; i++){
+                    for (int j=0; j<9; j++){
+                        grid[i][j] = tG[i][j];
+                    }
+                }
+            }
+        }
+
+}
+
+int Puzzle::CountNonZeros(int tG[9][9]){
+    int c=0;
+    for (int i=0; i<9; i++){
+        for (int j=0; j<9; j++){
+            if (tG[i][j] != 0){
+                c++;
+            }
+        }
+    }
+    return c;
 }
 
 void Puzzle::ProgressBar(int row, int col){
@@ -75,8 +144,6 @@ void Puzzle::ProgressBar(int row, int col){
 }
 
 int Puzzle::Solve(int row, int col){
-    //Display();
-    //std::this_thread::sleep_for(std::chrono::milliseconds(100));
     if (row == 9){
         return 0;
     } else if (col == 9){
@@ -166,4 +233,28 @@ void Puzzle::Display(){
         std::cout<<std::endl;
     }
     std::cout<<"-----------------------"<<std::endl;
+}
+
+int Puzzle::CheckSolve(){
+    for (int i = 0; i<9; i++){
+        for (int j = 0; j<9; j++){
+            if (grid[i][j] != solution[i][j]){
+                return 1;
+            }
+        }
+    }
+
+    return 0;
+}
+
+int Puzzle::Set(int row, int col, int num){
+    grid[row][col] = num;
+
+    int check = CheckFail(row, col);
+    if (check == 1){
+        grid[row][col] = 0;
+        return 1;
+    }
+
+    return 0;
 }

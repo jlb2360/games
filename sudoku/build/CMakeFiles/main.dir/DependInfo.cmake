@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/jlb1694/dev/games/sudoku/config.cpp" "/home/jlb1694/dev/games/sudoku/build/CMakeFiles/main.dir/config.cpp.o"
   "/home/jlb1694/dev/games/sudoku/main.cpp" "/home/jlb1694/dev/games/sudoku/build/CMakeFiles/main.dir/main.cpp.o"
+  "/home/jlb1694/dev/games/sudoku/sudoku.cpp" "/home/jlb1694/dev/games/sudoku/build/CMakeFiles/main.dir/sudoku.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

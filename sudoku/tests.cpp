@@ -4,7 +4,7 @@
 
 int main(){
 
-    Puzzle puz = Puzzle(1);
+    Puzzle puz = Puzzle(3);
 
     puz.Display();
 

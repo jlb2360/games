@@ -6,4 +6,8 @@ CMakeFiles/main.dir/config.cpp.o: ../config.h
 
 CMakeFiles/main.dir/main.cpp.o: ../config.h
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
+CMakeFiles/main.dir/main.cpp.o: ../sudoku.h
+
+CMakeFiles/main.dir/sudoku.cpp.o: ../sudoku.cpp
+CMakeFiles/main.dir/sudoku.cpp.o: ../sudoku.h
 
