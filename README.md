@@ -14,4 +14,7 @@ To build a game follow these directions
 ## Games
 
 ### Snake
-Snake is a classic game where you move a snake around collecting apples. (This game is not complete yet).
+Snake is a classic game where you move a snake around collecting apples.
+
+### Sudoku
+Sudoku is a puzzle game which you fill a 9x9 grid of numbers based on simple rules. (You can play, but the display is pretty confusing).
